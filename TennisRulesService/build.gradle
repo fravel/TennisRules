@@ -30,15 +30,15 @@ test{
 dependencies {
   testCompile group: 'junit', name: 'junit', version: '4.11'
   testCompile 'org.mockito:mockito-core:1.9.5'
-  compile group: 'javax', name: 'javaee-api', version: '7.0
+  compile group: 'javax', name: 'javaee-api', version: '7.0'
 }
 
 task jenkinsTest{
     inputs.files test.outputs.files
     doLast{
         def timestamp = System.currentTimeMillis()
-        test.testResultsDir.eachFile { it.lastModified = timestamp }
-	getReports().getJunitXml().getDestination().eachFile { it.lastModified = timestamp }
+        //test.testResultsDir.eachFile { it.lastModified = timestamp }
+	//getReports().getJunitXml().getDestination().eachFile { it.lastModified = timestamp }
 	test.getReports().getJunitXml().getDestination().eachFile { it.lastModified = timestamp }
     }
 }
