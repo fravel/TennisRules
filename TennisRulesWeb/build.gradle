@@ -1,6 +1,7 @@
 version = '1.0.0-SNAPSHOT'
 apply plugin: 'java'
 apply plugin: 'war'
+apply plugin: 'eclipse-wtp'
 apply plugin: 'eclipse'
 sourceCompatibility = 1.8
 
@@ -25,7 +26,7 @@ sourceSets {
 }
 
 dependencies {
- providedCompile(project(':TennisRulesService'))
+ compile(project(':TennisRulesService'))
  providedCompile group: 'javax', name: 'javaee-api', version: '7.0'
  testCompile 'org.seleniumhq.selenium:selenium-firefox-driver:2.+'
   testCompile group: 'junit', name: 'junit', version: '4.11'
@@ -34,6 +35,7 @@ dependencies {
 }
 
 jar.enabled = true
+project.webAppDirName = 'WebContent'
 war {
- from 'WebContent' 
+// from 'WebContent' 
 } 

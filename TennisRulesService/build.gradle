@@ -23,6 +23,13 @@ sourceSets {
  }
 }
 
+test{
+   doFirst{
+       delete testResultsDir
+   }
+}
+
+
 dependencies {
   testCompile group: 'junit', name: 'junit', version: '4.11'
   testCompile 'org.mockito:mockito-core:1.9.5'
