@@ -24,11 +24,8 @@ sourceSets {
 }
 
 test{
-   doFirst{
-       delete testResultsDir
-   }
+    outputs.upToDateWhen { false }
 }
-
 
 dependencies {
   testCompile group: 'junit', name: 'junit', version: '4.11'
