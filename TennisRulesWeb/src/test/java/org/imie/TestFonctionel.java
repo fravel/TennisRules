@@ -20,7 +20,7 @@ public class TestFonctionel {
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		driver = new FirefoxDriver();
-		driver.get("http://localhost:8080/TennisScoreWeb/TennisScore");
+		driver.get("http://localhost:8080/TennisRulesWeb-1.0.0-SNAPSHOT/TennisScore");
 	}
 	
 	@AfterClass
