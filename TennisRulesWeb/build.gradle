@@ -4,6 +4,8 @@ apply plugin: 'war'
 apply plugin: 'eclipse-wtp'
 apply plugin: 'eclipse'
 apply plugin: 'cargo'
+apply plugin: 'com.github.fowlie.GradleJenkinsTestPlugin'
+
 sourceCompatibility = 1.8
 
 group='imie'
@@ -16,6 +18,7 @@ buildscript {
     }
     dependencies {
         classpath 'org.gradle.api.plugins:gradle-cargo-plugin:1.5.1'
+        classpath 'com.github.fowlie:gradle-jenkins-test:+'
     }
 }
 
@@ -53,13 +56,5 @@ cargo {
 
 test.dependsOn cargoRedeployRemote
 
-task jenkinsTest{
-    inputs.files test.outputs.files
-    doLast{
-        def timestamp = System.currentTimeMillis()
-        test.testResultsDir.eachFile { it.lastModified = timestamp }
-    }
-}
 
-build.dependsOn(jenkinsTest)
 
