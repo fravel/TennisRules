@@ -53,4 +53,13 @@ cargo {
 
 test.dependsOn cargoRedeployRemote
 
+task jenkinsTest{
+    inputs.files test.outputs.files
+    doLast{
+        def timestamp = System.currentTimeMillis()
+        test.testResultsDir.eachFile { it.lastModified = timestamp }
+    }
+}
+
+build.dependsOn(jenkinsTest)
 
