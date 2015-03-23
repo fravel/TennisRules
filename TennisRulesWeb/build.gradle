@@ -8,6 +8,8 @@ sourceCompatibility = 1.8
 
 group='imie'
 
+test.ignoreFailures=true
+
 buildscript {
     repositories {
         jcenter()
