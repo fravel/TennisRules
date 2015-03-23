@@ -25,7 +25,9 @@ public class TestFonctionel {
 	
 	@AfterClass
 	public static void tearDownAfterClass() throws Exception{
-		driver.quit();
+		if(driver!=null){		
+			driver.quit();
+		}
 	}
 	
 	@Before
