@@ -20,14 +20,4 @@ dependencies {
   compile group: 'javax', name: 'javaee-api', version: '7.0'
 }
 
-task jenkinsTest{
-    inputs.files test.outputs.files
-    doLast{
-        def timestamp = System.currentTimeMillis()
-        test.testResultsDir.eachFile { it.lastModified = timestamp }
-    }
-}
-
-build.dependsOn(jenkinsTest)
-
 
