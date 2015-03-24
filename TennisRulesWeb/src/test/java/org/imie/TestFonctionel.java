@@ -80,7 +80,7 @@ public class TestFonctionel {
 		WebElement webElementE = driver.findElement(By.id("error"));
 		WebElement webElementS = driver.findElement(By.id("score"));
 		assertEquals("jeux déjà en victoire", webElementE.getText()); 
-		assertEquals("victoire J2", webElementS.getText());
+		assertEquals("victoire J1", webElementS.getText());
 	}
 
 }
