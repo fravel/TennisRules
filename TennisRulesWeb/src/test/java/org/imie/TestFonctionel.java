@@ -49,7 +49,7 @@ public class TestFonctionel {
 	public void test_15_0() {
 		driver.findElement(By.name("joueur1")).click();
 		WebElement webElement = driver.findElement(By.id("score"));
-		assertEquals("15-0", webElement.getText()); 
+		assertEquals("15_0", webElement.getText()); 
 	}
 	
 	@Test
