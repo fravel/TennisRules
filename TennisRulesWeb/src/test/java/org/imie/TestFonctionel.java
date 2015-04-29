@@ -16,7 +16,6 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 public class TestFonctionel {
 
 	private static WebDriver driver;
-     
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		driver = new FirefoxDriver();
