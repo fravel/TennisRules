@@ -32,7 +32,7 @@ war {
 
 dependencies {
  compile(project(':TennisRulesService'))
- providedCompile group: 'javax', name: 'javaee-api', version: '7.0'
+ providedCompile group: 'javax', name: 'javaee-api', version: '7.+'
  testCompile group: 'junit', name: 'junit', version: '4.+'
  testCompile 'org.seleniumhq.selenium:selenium-firefox-driver:2.+'
  testRuntime 'org.seleniumhq.selenium:selenium-support:2.+'
@@ -48,7 +48,7 @@ cargo {
   hostname = 'localhost'
   port = 9900
   username = 'imie'
-  password = '1m1e'
+  password = 'imie'
  }
 }
 
@@ -74,3 +74,19 @@ task jenkinsTest{
 
 build.dependsOn(jenkinsTest)
 
+
+configurations {
+    api
+}
+
+dependencies {
+    api 'org.seleniumhq.selenium:selenium-firefox-driver:2.+'
+    api	'org.seleniumhq.selenium:selenium-support:2.+'
+}
+
+task extractApi(type: Copy) {
+    from { // use of closure defers evaluation until execution time
+        configurations.api.collect { zipTree(it) }
+    } 
+    into "$buildDir/api/"
+}

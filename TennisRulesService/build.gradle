@@ -15,9 +15,28 @@ test{
 }	
 
 dependencies {
-  testCompile group: 'junit', name: 'junit', version: '4.11'
-  testCompile 'org.mockito:mockito-core:1.9.5'
-  compile group: 'javax', name: 'javaee-api', version: '7.0'
+  //testCompile group: 'junit', name: 'junit', version: '4.11'
+  testCompile group: 'junit', name: 'junit', version: '4.+'
+  //testCompile 'org.mockito:mockito-core:1.9.5'
+  testCompile 'org.mockito:mockito-core:1.+'
+  //compile group: 'javax', name: 'javaee-api', version: '7.0'
+  compile group: 'javax', name: 'javaee-api', version: '7.+'
 }
 
 
+configurations {
+    api
+}
+
+dependencies {
+    api(
+    	'org.mockito:mockito-core:1.+'
+    )
+}
+
+task extractApi(type: Copy) {
+    from { // use of closure defers evaluation until execution time
+        configurations.api.collect { zipTree(it) }
+    } 
+    into "$buildDir/api/"
+}
