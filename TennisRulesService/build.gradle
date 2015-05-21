@@ -1,28 +1,30 @@
 version = '1.0.0-SNAPSHOT'
+group='imie'
+
 apply plugin: 'java'
 apply plugin: 'eclipse'
 sourceCompatibility = 1.8
 
-group='imie'
 
 repositories {
     mavenCentral()
 }
 
+jar {
+	manifest {
+		attributes 'Main-Class': 'fr.imie.game.Main'
+	}
+}
 
 test{
     outputs.upToDateWhen { false }
 }	
 
 dependencies {
-  //testCompile group: 'junit', name: 'junit', version: '4.11'
-  testCompile group: 'junit', name: 'junit', version: '4.+'
-  //testCompile 'org.mockito:mockito-core:1.9.5'
+  testCompile 'junit:junit:4.+'
   testCompile 'org.mockito:mockito-core:1.+'
-  //compile group: 'javax', name: 'javaee-api', version: '7.0'
-  compile group: 'javax', name: 'javaee-api', version: '7.+'
+  compile 'javax:javaee-api:7.0'
 }
-
 
 configurations {
     api

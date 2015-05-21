@@ -1,7 +1,7 @@
 package org.imie.test;
 
-import org.imie.testTDDTennis.ISerialiser;
-import org.imie.testTDDTennis.Jeux;
+import org.imie.ISerialiser;
+import org.imie.Jeux;
 
 public class MockedSerialiser implements ISerialiser {
 

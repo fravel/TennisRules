@@ -3,11 +3,9 @@
  */
 package org.imie.test;
 
-import static org.junit.Assert.*;
-import junit.framework.Assert;
+import static org.junit.Assert.assertEquals;
 
-import org.imie.testTDDTennis.ISerialiser;
-import org.imie.testTDDTennis.Jeux;
+import org.imie.Jeux;
 import org.junit.Before;
 import org.junit.Test;
 

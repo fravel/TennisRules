@@ -1,4 +1,6 @@
-package org.imie.testTDDTennis;
+package org.imie;
+
+import org.imie.Jeux;
 
 public interface ISerialiser {
 

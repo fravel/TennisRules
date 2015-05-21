@@ -1,4 +1,5 @@
-package org.imie.testTDDTennis;
+package org.imie;
+
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -6,8 +7,6 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-import javax.enterprise.context.SessionScoped;
-import javax.enterprise.inject.Default;
 import javax.inject.Named;
 
 @Named("serialiser")
@@ -24,7 +23,13 @@ public class Serialiser implements ISerialiser {
 			oos = new ObjectOutputStream(fichier);
 			oos.writeObject(jeux);
 			oos.flush();
+			oos.close();
 		} catch (IOException e) {
+			try {
+				oos.close();
+			} catch (IOException e1) {
+				throw new RuntimeException(e1);
+			}
 			throw new RuntimeException(e);
 		}
 
@@ -42,7 +47,13 @@ public class Serialiser implements ISerialiser {
 			fichier = new FileInputStream("jeux.ser");
 			ois = new ObjectInputStream(fichier);
 			retour = (Jeux) ois.readObject();
+			ois.close();
 		} catch (IOException | ClassNotFoundException e) {
+			try {
+				ois.close();
+			} catch (IOException e1) {
+				throw new RuntimeException(e1);
+			}
 			throw new RuntimeException(e);
 		}
 		return retour;

@@ -1,4 +1,4 @@
-package org.imie.testTDDTennis;
+package org.imie;
 
 import java.io.Serializable;
 
@@ -9,6 +9,10 @@ import javax.inject.Named;
 @SessionScoped
 public class Jeux implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5095427833317835509L;
 	private Integer score1 = 0;
 	private Integer score2 = 0;
 	private Boolean victoire = false;

@@ -1,4 +1,5 @@
 version = '1.0.0-SNAPSHOT'
+group='imie'
 apply plugin: 'java'
 apply plugin: 'war'
 apply plugin: 'eclipse-wtp'
@@ -7,9 +8,11 @@ apply plugin: 'cargo'
 
 sourceCompatibility = 1.8
 
-group='imie'
-
 test.ignoreFailures=true
+
+/*test{
+    outputs.upToDateWhen { false }
+}*/
 
 buildscript {
     repositories {
@@ -32,8 +35,8 @@ war {
 
 dependencies {
  compile(project(':TennisRulesService'))
- providedCompile group: 'javax', name: 'javaee-api', version: '7.+'
- testCompile group: 'junit', name: 'junit', version: '4.+'
+ providedCompile 'javax:javaee-api:7.0'
+ testCompile 'junit:junit:4.+'
  testCompile 'org.seleniumhq.selenium:selenium-firefox-driver:2.+'
  testRuntime 'org.seleniumhq.selenium:selenium-support:2.+'
  def cargoVersion = '1.4.+'
@@ -57,23 +60,12 @@ test.dependsOn cargoRedeployRemote
 task jenkinsTest{
  def timestamp = System.currentTimeMillis()
  doLast{
-// 	delete project.testResultsDir
  	testResultsDir.eachFile { it.lastModified = timestamp }
  }
 }
 
 
-//task jenkinsTest {
-// inputs.files test.outputs.files
-// doLast {
-//  def timestamp = System.currentTimeMillis()
-//  if (test.testResultsDir.exists())
-//   test.testResultsDir.eachFile { it.lastModified = timestamp }
-// }
-//}
-
 build.dependsOn(jenkinsTest)
-
 
 configurations {
     api

@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.imie.testTDDTennis.Jeux;
+import org.imie.Jeux;
 
 /**
  * Servlet implementation class TennisScore
@@ -19,7 +19,7 @@ public class TennisScore extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	@Inject
 	private Jeux jeux;
-
+	
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
@@ -34,6 +34,7 @@ public class TennisScore extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
+
 		request.getSession().setAttribute("score", jeux.getScore());
 		request.getRequestDispatcher("WEB-INF/jeux.jsp").forward(request,
 				response);
